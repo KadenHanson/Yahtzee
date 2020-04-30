@@ -1,0 +1,470 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Yahtzee!</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <script src="JS/jquery-3.2.1.min.js"></script>
+    <script src="JS/jquery-ui.min.js"></script>
+</head>
+<body>
+    <div class="font24" style="position: absolute; right: 2%; top: 1em;">
+        <table class="table noBorder">
+            <tr>
+                <td id="player1">
+                    <span id="player1Name"></span>
+                    <span id="player1TotalScore"></span>
+                    <input type="button" value="Create Player" class="btn" id="createPlayer1" onclick="$('#player1Score').show(); $(this).hide(); $('#createPlayer2').show(); $('#scoreBoardDiv').append('<div><div id=&quot;close1&quot; class=&quot;closeBtn&quot; onclick=&quot;$(\'#scoreBoard1, #overlay\').hide(); $(this).hide(); $(\'#points1, #points2, #points3, #points4, #points5, #points6\').removeClass(\'whiteText\');&quot;>Close X</div><iframe src=\'ScoreBoard.html\' id=\'scoreBoard1\' name=\'scoreBoard1\'></iframe></div>'); $('#scoreBoard1, #overlay').show(); $('#Points1, #Points2, #Points3, #Points4, #Points5, #Points6, #total').addClass('whiteText');" />
+                </td>
+                <td id="player1Score">
+                    <input type="button" value="ScoreBoard" class="btn" id="player1Btn" onclick="$('#scoreBoard1, #close1, #overlay').toggle(); $('#scoreBoard2, #scoreBoard3, #scoreBoard4, #scoreBoard5, #scoreBoard6, #close2, #close3, #close4, #close5, #close6').hide(); $('#Points1, #Points2, #Points3, #Points4, #Points5, #Points6, #total').addClass('whiteText');" />
+                </td>
+            </tr>
+            <tr>
+                <td id="player2">
+                    <span id="player2Name"></span>
+                    <span id="player2TotalScore"></span>
+                    <input type="button" value="Create Player" class="btn" id="createPlayer2" onclick="$('#player2Score').show(); $(this).hide(); $('#createPlayer3').show(); $('#scoreBoardDiv').append('<div><div id=&quot;close2&quot;  class=&quot;closeBtn&quot;  onclick=&quot;$(\'#scoreBoard2, #overlay\').hide(); $(this).hide(); $(\'#points1, #points2, #points3, #points4, #points5, #points6\').removeClass(\'whiteText\');&quot;>Close X</div><iframe src=\'ScoreBoard.html\' id=\'scoreBoard2\' name=\'scoreBoard2\'></iframe></div>'); $('#scoreBoard2, #overlay').show(); $('#Points1, #Points2, #Points3, #Points4, #Points5, #Points6, #total').addClass('whiteText');" />
+                </td>
+                <td id="player2Score">
+                    <input type="button" value="ScoreBoard" class="btn" id="player2Btn" onclick="$('#scoreBoard2, #close2, #overlay').toggle(); $('#scoreBoard1, #scoreBoard3, #scoreBoard4, #scoreBoard5, #scoreBoard6, #close1, #close3, #close4, #close5, #close6').hide(); $('#Points1, #Points2, #Points3, #Points4, #Points5, #Points6, #total').addClass('whiteText');" />
+                </td>
+            </tr>
+            <tr>
+                <td id="player3">
+                    <span id="player3Name"></span>
+                    <span id="player3TotalScore"></span>
+                    <input type="button" value="Create Player" class="btn" id="createPlayer3" onclick="$('#player3Score').show(); $(this).hide(); $('#createPlayer4').show(); $('#scoreBoardDiv').append('<div><div id=&quot;close3&quot;  class=&quot;closeBtn&quot;  onclick=&quot;$(\'#scoreBoard3, #overlay\').hide(); $(this).hide(); $(\'#points1, #points2, #points3, #points4, #points5, #points6\').removeClass(\'whiteText\');&quot;>Close X</div><iframe src=\'ScoreBoard.html\' id=\'scoreBoard3\' name=\'scoreBoard3\'></iframe></div>'); $('#scoreBoard3, #overlay').show(); $('#Points1, #Points2, #Points3, #Points4, #Points5, #Points6, #total').addClass('whiteText');" />
+                </td>
+                <td id="player3Score">
+                    <input type="button" value="ScoreBoard" class="btn" id="player3Btn" onclick="$('#scoreBoard3, #close3, #overlay').toggle(); $('#scoreBoard2, #scoreBoard1, #scoreBoard4, #scoreBoard5, #scoreBoard6, #close2, #close1, #close4, #close5, #close6').hide(); $('#Points1, #Points2, #Points3, #Points4, #Points5, #Points6, #total').addClass('whiteText');" />
+                </td>
+            </tr>
+            <tr>
+                <td id="player4">
+                    <span id="player4Name"></span>
+                    <span id="player4TotalScore"></span>
+                    <input type="button" value="Create Player" class="btn" id="createPlayer4" onclick="$('#player4Score').show(); $(this).hide(); $('#createPlayer5').show(); $('#scoreBoardDiv').append('<div><div id=&quot;close4&quot;  class=&quot;closeBtn&quot;  onclick=&quot;$(\'#scoreBoard4, #overlay\').hide(); $(this).hide(); $(\'#points1, #points2, #points3, #points4, #points5, #points6\').removeClass(\'whiteText\');&quot;>Close X</div><iframe src=\'ScoreBoard.html\' id=\'scoreBoard4\' name=\'scoreBoard4\'></iframe></div>'); $('#scoreBoard4, #overlay').show(); $('#Points1, #Points2, #Points3, #Points4, #Points5, #Points6, #total').addClass('whiteText');" />
+                </td>
+                <td id="player4Score">
+                    <input type="button" value="ScoreBoard" class="btn" id="player4Btn" onclick="$('#scoreBoard4, #close4, #overlay').toggle(); $('#scoreBoard2, #scoreBoard3, #scoreBoard1, #scoreBoard5, #scoreBoard6, #close2, #close3, #close1, #close5, #close6').hide(); $('#Points1, #Points2, #Points3, #Points4, #Points5, #Points6, #total').addClass('whiteText');" />
+                </td>
+            </tr>
+            <tr>
+                <td id="player5">
+                    <span id="player5Name"></span>
+                    <span id="player5TotalScore"></span>
+                    <input type="button" value="Create Player" class="btn" id="createPlayer5" onclick="$('#player5Score').show(); $(this).hide(); $('#createPlayer6').show(); $('#scoreBoardDiv').append('<div><div id=&quot;close5&quot;  class=&quot;closeBtn&quot;  onclick=&quot;$(\'#scoreBoard5, #overlay\').hide(); $(this).hide(); $(\'#points1, #points2, #points3, #points4, #points5, #points6\').removeClass(\'whiteText\');&quot;>Close X</div><iframe src=\'ScoreBoard.html\' id=\'scoreBoard5\' name=\'scoreBoard5\'></iframe></div>'); $('#scoreBoard5, #overlay').show(); $('#Points1, #Points2, #Points3, #Points4, #Points5, #Points6, #total').addClass('whiteText');" />
+                </td>
+                <td id="player5Score">
+                    <input type="button" value="ScoreBoard" class="btn" id="player5Btn" onclick="$('#scoreBoard5, #close5, #overlay').toggle(); $('#scoreBoard2, #scoreBoard3, #scoreBoard1, #scoreBoard4, #scoreBoard6, #close2, #close3, #close1, #close4, #close6').hide(); $('#Points1, #Points2, #Points3, #Points4, #Points5, #Points6, #total').addClass('whiteText');" />
+                </td>
+            </tr>
+            <tr>
+                <td id="player6">
+                    <span id="player6Name"></span>
+                    <span id="player6TotalScore"></span>
+                    <input type="button" value="Create Player" class="btn" id="createPlayer6" onclick="$('#player6Score').show(); $(this).hide(); $('#scoreBoardDiv').append('<div><div id=&quot;close6&quot;  class=&quot;closeBtn&quot;  onclick=&quot;$(\'#scoreBoard6, #overlay\').hide(); $(this).hide(); $(\'#points1, #points2, #points3, #points4, #points5, #points6\').removeClass(\'whiteText\');&quot;>Close X</div><iframe src=\'ScoreBoard.html\' id=\'scoreBoard6\' name=\'scoreBoard6\'></iframe></div>'); $('#scoreBoard6, #overlay').show(); $('#Points1, #Points2, #Points3, #Points4, #Points5, #Points6, #total').addClass('whiteText');" />
+                </td>
+                <td id="player6Score">
+                    <input type="button" value="ScoreBoard" class="btn" id="player6Btn" onclick="$('#scoreBoard6, #close6, #overlay').toggle(); $('#scoreBoard2, #scoreBoard3, #scoreBoard1, #scoreBoard4, #scoreBoard5, #close2, #close3, #close1, #close4, #close5').hide(); $('#Points1, #Points2, #Points3, #Points4, #Points5, #Points6, #total').addClass('whiteText');" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="centerAlign mainTxt" id="yahtzee" style="cursor: default;">Yahtzee</div>
+    <table class="font24" style="position: absolute; top: 50px; width: 50px; color: white; z-index: 51; left: 10px;">
+        <thead>
+            <tr>
+                <td colspan="3">Points</td>
+            </tr>
+        </thead>
+        <colgroup>
+            <col width="6%" />
+            <col width="1%" />
+            <col width="93%" />
+        </colgroup>
+        <tr>
+            <td>1&emsp;</td>
+            <td>=</td>
+            <td><input class="font28 centerAlign scoreBox" type="text" id="Points1" disabled /></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>=</td>
+            <td><input class="font28 centerAlign scoreBox" type="text" id="Points2" disabled /></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>=</td>
+            <td><input class="font28 centerAlign scoreBox" type="text" id="Points3" disabled /></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>=</td>
+            <td><input class="font28 centerAlign scoreBox" type="text" id="Points4" disabled /></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>=</td>
+            <td><input class="font28 centerAlign scoreBox" type="text" id="Points5" disabled /></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>=</td>
+            <td><input class="font28 centerAlign scoreBox" type="text" id="Points6" disabled /></td>
+        </tr>
+    </table>
+    <table class="font24" style="position: relative; top: 200px; color: white; z-index: 52; left: 10px;">
+        <tr>
+            <td>Total</td>
+            <td>=</td>
+            <td><input class="font28 centerAlign totalBox" type="text" id="total" disabled /></td>
+        </tr>
+    </table>
+    <table class="font24 diceTable" style="width: 70%; margin: auto; margin-top: 200px;">
+        <colgroup>
+            <col width="20%" />
+            <col width="20%" />
+            <col width="20%" />
+            <col width="20%" />
+            <col width="20%" />
+        </colgroup>
+        <tr>
+            <td class="centerAlign height-165"><img class="diceBlock die" id="dice1" src="Images/2-side.jpg" /></td>
+            <td class="centerAlign height-165"><img class="diceBlock die" id="dice2" src="Images/3-side.jpg" /></td>
+            <td class="centerAlign height-165"><img class="diceBlock die" id="dice3" src="Images/4-side.jpg" /></td>
+            <td class="centerAlign height-165"><img class="diceBlock die" id="dice4" src="Images/5-side.jpg" /></td>
+            <td class="centerAlign height-165"><img class="diceBlock die" id="dice5" src="Images/6-side.jpg" /></td>
+        </tr>
+    </table>
+    <div id="wooHoo" class="font52 centerAlign" style="color: white; display: none; cursor: default;">You rolled a Yahtzee!</div>
+    <div class="centerAlign">
+        <div id="firstRoll" onclick="initialRoll(); $(this).hide(); $('#rollAgain').show(); window.rollCount++; window.rollCount2++; countRolls(); checkForYahtzee(); $('.diceBlock').css('cursor', 'pointer');" class="font24 rollButton noSelect">Click to Roll</div>
+        <div onclick="initialRoll(); window.rollCount++; checkCount(); window.rollCount2++; countRolls(); checkForYahtzee();" class="font24 rollButton noSelect" id="rollAgain">Roll Again</div>
+        <div onclick="$('#firstRoll').show(); $(this).hide(); resetGame(); $('.diceBlock').css('cursor', 'default');" class="font24 rollButton noSelect" id="reset">Reset</div>
+    </div>
+    <div class="centerAlign font24" style="margin-top: 30px; cursor: default;">You are on roll:<input class="font28 centerAlign scoreBox" type="text" id="rollCounter" value="0" disabled /></div>
+    <div id="overlay" onclick="$('#scoreBoard2, #scoreBoard3, #scoreBoard1, #scoreBoard4, #scoreBoard5, #scoreBoard6, #close2, #close3, #close1, #close4, #close5, #close6, #overlay').hide(); $('#Points1, #Points2, #Points3, #Points4, #Points5, #Points6, #total').removeClass('whiteText');"></div>
+    <div id="scoreBoardDiv" style="position: absolute; top: 5em; left: 29%; z-index: 50;"></div>
+</body>
+</html>
+
+<script>
+    $('#rollAgain').hide();
+    $('#reset').hide();
+    $('.diceBlock').css('cursor', 'default');
+
+    $('#createPlayer2').hide();
+    $('#createPlayer3').hide();
+    $('#createPlayer4').hide();
+    $('#createPlayer5').hide();
+    $('#createPlayer6').hide();
+
+    $('#player1Score').hide();
+    $('#player2Score').hide();
+    $('#player3Score').hide();
+    $('#player4Score').hide();
+    $('#player5Score').hide();
+    $('#player6Score').hide();
+
+    window.rollCount = 0;
+    window.rollCount2 = 0;
+
+    $('.die').each(function () {
+        $(this).click(function () {
+            if (rollCount != 0) {
+                $(this).toggleClass('die selectedDice');
+            }
+        });
+    });
+
+    var dice = {
+        sides: 6,
+        roll: function () {
+            var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+            return randomNumber;
+        }
+    }
+
+    function addPoints() {
+        var sixes = $('img[src*="6-side"]').length * 6;
+        var fives = $('img[src*="5-side"]').length * 5;
+        var fours = $('img[src*="4-side"]').length * 4;
+        var threes = $('img[src*="3-side"]').length * 3;
+        var twos = $('img[src*="2-side"]').length * 2;
+        var ones = $('img[src*="1-side"]').length * 1;
+        var totals = sixes + fives + fours + threes + twos + ones;
+
+        $('#Points6').val(sixes);
+        $('#Points5').val(fives);
+        $('#Points4').val(fours);
+        $('#Points3').val(threes);
+        $('#Points2').val(twos);
+        $('#Points1').val(ones);
+        $('#total').val(totals);
+    }
+
+    function resetGame() {
+        $('#dice1').attr('src', 'Images/2-side.jpg');
+        $('#dice2').attr('src', 'Images/3-side.jpg');
+        $('#dice3').attr('src', 'Images/4-side.jpg');
+        $('#dice4').attr('src', 'Images/5-side.jpg');
+        $('#dice5').attr('src', 'Images/6-side.jpg');
+
+        $('#Points6').val('');
+        $('#Points5').val('');
+        $('#Points4').val('');
+        $('#Points3').val('');
+        $('#Points2').val('');
+        $('#Points1').val('');
+        $('#total').val('');
+
+        $('.diceBlock').removeClass('selectedDice');
+        $('.diceBlock').addClass('die');
+
+        $('body').css('backgroundImage', '');
+        $('#wooHoo').css('display', 'none');
+
+        window.rollCount2 = 0;
+        countRolls();
+    }
+
+    function checkCount() {
+        if (rollCount >= 3) {
+            window.rollCount = 0;
+            $('#reset').show();
+            $('#rollAgain').hide();
+        }
+    }
+
+    function countRolls() {
+        if (rollCount2 == 1) {
+            $('#rollCounter').val(1);
+        } else if (rollCount2 == 2) {
+            $('#rollCounter').val(2);
+        } else if (rollCount2 == 3) {
+            $('#rollCounter').val(3);
+        } else if (rollCount2 == 0) {
+            $('#rollCounter').val(0);
+        }
+    }
+
+    window.tally = 0;
+
+    var rollArray = [];
+
+    function showImage() {
+        $(rollArray).each(function () {
+            //Dice 1
+            switch (rollArray[0]) {
+                case 1:
+                    $('.die:eq("0")').attr('src', 'Images/1-side.jpg');
+                    break;
+                case 2:
+                    $('.die:eq("0")').attr('src', 'Images/2-side.jpg');
+                    break;
+                case 3:
+                    $('.die:eq("0")').attr('src', 'Images/3-side.jpg');
+                    break;
+                case 4:
+                    $('.die:eq("0")').attr('src', 'Images/4-side.jpg');
+                    break;
+                case 5:
+                    $('.die:eq("0")').attr('src', 'Images/5-side.jpg');
+                    break;
+                case 6:
+                    $('.die:eq("0")').attr('src', 'Images/6-side.jpg');
+                    break;
+            }
+
+            //Dice 2
+            switch (rollArray[1]) {
+                case 1:
+                    $('.die:eq("1")').attr('src', 'Images/1-side.jpg');
+                    break;
+                case 2:
+                    $('.die:eq("1")').attr('src', 'Images/2-side.jpg');
+                    break;
+                case 3:
+                    $('.die:eq("1")').attr('src', 'Images/3-side.jpg');
+                    break;
+                case 4:
+                    $('.die:eq("1")').attr('src', 'Images/4-side.jpg');
+                    break;
+                case 5:
+                    $('.die:eq("1")').attr('src', 'Images/5-side.jpg');
+                    break;
+                case 6:
+                    $('.die:eq("1")').attr('src', 'Images/6-side.jpg');
+                    break;
+            }
+
+            //Dice 3
+            switch (rollArray[2]) {
+                case 1:
+                    $('.die:eq("2")').attr('src', 'Images/1-side.jpg');
+                    break;
+                case 2:
+                    $('.die:eq("2")').attr('src', 'Images/2-side.jpg');
+                    break;
+                case 3:
+                    $('.die:eq("2")').attr('src', 'Images/3-side.jpg');
+                    break;
+                case 4:
+                    $('.die:eq("2")').attr('src', 'Images/4-side.jpg');
+                    break;
+                case 5:
+                    $('.die:eq("2")').attr('src', 'Images/5-side.jpg');
+                    break;
+                case 6:
+                    $('.die:eq("2")').attr('src', 'Images/6-side.jpg');
+                    break;
+            }
+
+            //Dice 4
+            switch (rollArray[3]) {
+                case 1:
+                    $('.die:eq("3")').attr('src', 'Images/1-side.jpg');
+                    break;
+                case 2:
+                    $('.die:eq("3")').attr('src', 'Images/2-side.jpg');
+                    break;
+                case 3:
+                    $('.die:eq("3")').attr('src', 'Images/3-side.jpg');
+                    break;
+                case 4:
+                    $('.die:eq("3")').attr('src', 'Images/4-side.jpg');
+                    break;
+                case 5:
+                    $('.die:eq("3")').attr('src', 'Images/5-side.jpg');
+                    break;
+                case 6:
+                    $('.die:eq("3")').attr('src', 'Images/6-side.jpg');
+                    break;
+            }
+
+            //Dice 5
+            switch (rollArray[4]) {
+                case 1:
+                    $('.die:eq("4")').attr('src', 'Images/1-side.jpg');
+                    break;
+                case 2:
+                    $('.die:eq("4")').attr('src', 'Images/2-side.jpg');
+                    break;
+                case 3:
+                    $('.die:eq("4")').attr('src', 'Images/3-side.jpg');
+                    break;
+                case 4:
+                    $('.die:eq("4")').attr('src', 'Images/4-side.jpg');
+                    break;
+                case 5:
+                    $('.die:eq("4")').attr('src', 'Images/5-side.jpg');
+                    break;
+                case 6:
+                    $('.die:eq("4")').attr('src', 'Images/6-side.jpg');
+                    break;
+            }
+        });
+
+        window.rollArray = [];
+        window.tally = 0;
+        addPoints();
+    }
+
+    function pushNumber(x) {
+        rollArray.push(x);
+        window.tally++;
+
+        if ($('.die').length == 5) {
+            if (tally == 5) {
+                showImage(x);
+            }
+        }
+
+        if ($('.die').length == 4) {
+            if (tally == 4) {
+                showImage(x);
+            }
+        }
+
+        if ($('.die').length == 3) {
+            if (tally == 3) {
+                showImage(x);
+            }
+        }
+
+        if ($('.die').length == 2) {
+            if (tally == 2) {
+                showImage(x);
+            }
+        }
+
+        if ($('.die').length == 1) {
+            if (tally == 1) {
+                showImage(x);
+            }
+        }
+    }
+
+    function initialRoll() {
+        $('.die').each(function () {
+            pushNumber(dice.roll());
+        });
+    }
+
+    function bouncing() {
+        $('.diceBlock').effect('bounce', { times: 5 }, 1000);
+        setTimeout(function () {
+            if (rollCount2 == 0) {
+            }
+            else {
+                bouncing();
+            }
+        }, 1750);
+    }
+
+    function yahtzeeAnimation() {
+        $('body').css('backgroundImage', 'url(Images/confetti.gif)');
+        $('#wooHoo').css('display', 'block');
+
+        $("#yahtzee").animate({
+            fontSize: '200pt',
+            color: '#73a2ef'
+        }, 550, function () {
+            fixIt();
+        });
+
+        function fixIt() {
+            $("#yahtzee").animate({
+                fontSize: '100pt',
+                color: 'white'
+            }, 550, function () {
+                bouncing();
+            });
+        }
+    }
+
+    function checkForYahtzee() {
+        if ($('img[src*="6-side"]').length == 5) {
+            yahtzeeAnimation();
+        }
+        if ($('img[src*="5-side"]').length == 5) {
+            yahtzeeAnimation();
+        }
+        if ($('img[src*="4-side"]').length == 5) {
+            yahtzeeAnimation();
+        }
+        if ($('img[src*="3-side"]').length == 5) {
+            yahtzeeAnimation();
+        }
+        if ($('img[src*="2-side"]').length == 5) {
+            yahtzeeAnimation();
+        }
+        if ($('img[src*="1-side"]').length == 5) {
+            yahtzeeAnimation();
+        }
+    }
+</script>

@@ -1,0 +1,458 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <script src="JS/jquery-3.2.1.min.js"></script>
+    <script src="JS/jquery-ui.min.js"></script>
+</head>
+<body style="background-color: white; overflow: auto;">
+    <div style="padding: 10px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-xs-8" style="border: 1px solid black; border-radius: 9px;">
+                    <div class="font16 bottomBorder col-sm-12"><b>Upper Section</b><div style="text-align: right; float: right;">Name: <input id="name" type="text" onblur="if ($(this).val() !== '') { $(this).attr('disabled', 'disabled'); $(this).addClass('noShow'); capName(); populateName(); }" /><span id="edit" class="editBtn" onclick="$('#name').removeAttr('disabled'); $('#name').removeClass('noShow'); $('#name').focus(); $('#name').val(''); editing = true;">&#x270E;</span></div></div>
+                    <div class="container">
+                        <div class="row font12">
+                            <table class="table scoreTable col-sm-12 noBorder">
+                                <tr>
+                                    <td>
+                                        <b>Aces</b>
+                                    </td>
+                                    <td>
+                                        <img src="Images/1-side.jpg" style="width: 40px; border: 1px solid black;" /><b>&nbsp;= 1</b>
+                                    </td>
+                                    <td>
+                                        <input id="aces" type="number" class="pad3 scores" onkeypress="pressEnter();" min="0" max="4" />&nbsp;<span onclick="disableBoxes('aces'); if ($('#aces').is(':disabled')) { $(this).addClass('green'); $(this).removeClass('point'); }" class="point check" id="acesCheck">&#10003;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>Twos</b>
+                                    </td>
+                                    <td>
+                                        <img src="Images/2-side.jpg" style="width: 40px; border: 1px solid black;" /><b>&nbsp;= 2</b>
+                                    </td>
+                                    <td>
+                                        <input id="twos" type="number" class="pad3 scores" onkeypress="pressEnter();" min="0" max="8" step="2" />&nbsp;<span onclick="disableBoxes('twos'); if ($('#twos').is(':disabled')) { $(this).addClass('green'); $(this).removeClass('point'); }" class="point check" id="twosCheck">&#10003;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>Threes</b>
+                                    </td>
+                                    <td>
+                                        <img src="Images/3-side.jpg" style="width: 40px; border: 1px solid black;" /><b>&nbsp;= 3</b>
+                                    </td>
+                                    <td>
+                                        <input id="threes" type="number" class="pad3 scores" onkeypress="pressEnter();" min="0" max="12" step="3" />&nbsp;<span onclick="disableBoxes('threes'); if ($('#threes').is(':disabled')) { $(this).addClass('green'); $(this).removeClass('point'); }" class="point check" id="threesCheck">&#10003;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>Fours</b>
+                                    </td>
+                                    <td>
+                                        <img src="Images/4-side.jpg" style="width: 40px; border: 1px solid black;" /><b>&nbsp;= 4</b>
+                                    </td>
+                                    <td>
+                                        <input id="fours" type="number" class="pad3 scores" onkeypress="pressEnter();" min="0" max="16" step="4" />&nbsp;<span onclick="disableBoxes('fours'); if ($('#fours').is(':disabled')) { $(this).addClass('green'); $(this).removeClass('point'); }" class="point check" id="foursCheck">&#10003;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>Fives</b>
+                                    </td>
+                                    <td>
+                                        <img src="Images/5-side.jpg" style="width: 40px; border: 1px solid black;" /><b>&nbsp;= 5</b>
+                                    </td>
+                                    <td>
+                                        <input id="fives" type="number" class="pad3 scores" onkeypress="pressEnter();" min="0" max="20" step="5" />&nbsp;<span onclick="disableBoxes('fives'); if ($('#fives').is(':disabled')) { $(this).addClass('green'); $(this).removeClass('point'); }" class="point check" id="fivesCheck">&#10003;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>Sixes</b>
+                                    </td>
+                                    <td>
+                                        <img src="Images/6-side.jpg" style="width: 40px; border: 1px solid black;" /><b>&nbsp;= 6</b>
+                                    </td>
+                                    <td>
+                                        <input id="sixes" type="number" class="pad3 scores" onkeypress="pressEnter();" min="0" max="24" step="6" />&nbsp;<span onclick="disableBoxes('sixes'); if ($('#sixes').is(':disabled')) { $(this).addClass('green'); $(this).removeClass('point'); }" class="point check" id="sixesCheck">&#10003;</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 bottomBorder"></div>
+                    <div class="container">
+                        <div class="row font12">
+                            <table class="table scoreTable col-sm-12 noBorder">
+                                <tr>
+                                    <td style="text-align: right;">
+                                        <b>BONUS</b>
+                                    </td>
+                                    <td style="font-size: 9pt;">
+                                        If total score is 63 or over
+                                    </td>
+                                    <td>
+                                        <span class="check" id="bonusCheck">&#10003;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right;">
+                                        <b>TOTAL</b>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <b>SCORE</b>
+                                    </td>
+                                    <td>
+                                        <input class="pad3" type="number" id="upperScore" disabled>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 bottomBorder"></div>
+                    <div class="col-sm-12 bottomBorder font16"><b>Lower Section</b></div>
+                    <div class="container">
+                        <div class="row font12">
+                            <table class="table scoreTable2 col-sm-12 noBorder">
+                                <tr>
+                                    <td>
+                                        <b>3 of a kind</b>
+                                    </td>
+                                    <td>
+                                        Add Total Of All Dice
+                                    </td>
+                                    <td>
+                                        <input id="3oKind" type="number" class="pad3 scores" onkeypress="pressEnter();" min="0" max="29" />&nbsp;<span onclick="disableBoxes('3oKind'); if ($('#3oKind').is(':disabled')) { $(this).addClass('green'); $(this).removeClass('point'); }" class="point check" id="3oKindCheck">&#10003;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>4 of a kind</b>
+                                    </td>
+                                    <td>
+                                        Add Total Of All Dice
+                                    </td>
+                                    <td>
+                                        <input id="4oKind" type="number" class="pad3 scores" onkeypress="pressEnter();" min="0" max="29" />&nbsp;<span onclick="disableBoxes('4oKind'); if ($('#4oKind').is(':disabled')) { $(this).addClass('green'); $(this).removeClass('point'); }" class="point check" id="4oKindCheck">&#10003;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>Full House</b>
+                                    </td>
+                                    <td class="centerAlign">
+                                        <span onclick="if ($('#fullHouse').val() === '') { $(this).addClass('green'); $('#fullHouse').val(25); $('#fullHouseNo').removeClass('point'); disableBoxes('fullHouse'); }" class="point check" id="fullHouseCheck" style="font-size: 18pt;">&#10003;</span>&emsp;<span style="font-size: 18pt;" class="point check" id="fullHouseNo" onclick="if ($('#fullHouse').val() === '') { $(this).addClass('red'); $(this).removeClass('point'); $('#fullHouse').val(0); $('#fullHouseCheck').removeClass('point'); disableBoxes('fullHouse'); }">&#10007;</span>
+                                    </td>
+                                    <td>
+                                        <input id="fullHouse" type="number" class="pad3 scores" disabled />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>
+                                            Sm Straight
+                                        </b>
+                                    </td>
+                                    <td class="centerAlign">
+                                        <span onclick="if ($('#smStraight').val() === '') { $(this).addClass('green'); $('#smStraight').val(30); $('#smStraightNo').removeClass('point'); disableBoxes('smStraight'); }" class="point check" id="smStraightCheck" style="font-size: 18pt;">&#10003;</span>&emsp;<span style="font-size: 18pt;" class="point check" id="smStraightNo" onclick="if ($('#smStraight').val() === '') { $(this).addClass('red'); $(this).removeClass('point'); $('#smStraight').val(0); $('#smStraightCheck').removeClass('point'); disableBoxes('smStraight'); }">&#10007;</span>
+                                    </td>
+                                    <td>
+                                        <input id="smStraight" type="number" class="pad3 scores" disabled />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>
+                                            Lg. Straight
+                                        </b>
+                                    </td>
+                                    <td class="centerAlign">
+                                        <span onclick="if ($('#lgStraight').val() === '') { $(this).addClass('green'); $('#lgStraight').val(40); $('#lgStraightNo').removeClass('point'); disableBoxes('lgStraight'); }" class="point check" id="lgStraightCheck" style="font-size: 18pt;">&#10003;</span>&emsp;<span style="font-size: 18pt;" class="point check" id="lgStraightNo" onclick="if ($('#lgStraight').val() === '') { $(this).addClass('red'); $(this).removeClass('point'); $('#lgStraight').val(0); $('#lgStraightCheck').removeClass('point'); disableBoxes('lgStraight'); }">&#10007;</span>
+                                    </td>
+                                    <td>
+                                        <input id="lgStraight" type="number" class="pad3 scores" disabled />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>
+                                            YAHTZEE
+                                        </b>
+                                    </td>
+                                    <td class="centerAlign">
+                                        <span onclick="if ($('#yahtzee').val() === '') { $(this).addClass('green'); $('#yahtzee').val(50); $('#yahtzeeNo').removeClass('point'); disableBoxes('yahtzee'); }" class="point check" id="yahtzeeCheck" style="font-size: 18pt;">&#10003;</span>&emsp;<span style="font-size: 18pt;" class="point check" id="yahtzeeNo" onclick="if ($('#yahtzee').val() === '') { $(this).addClass('red'); $(this).removeClass('point'); $('#yahtzee').val(0); $('#yahtzeeCheck').removeClass('point'); disableBoxes('yahtzee'); }">&#10007;</span>
+                                    </td>
+                                    <td>
+                                        <input id="yahtzee" type="number" class="pad3 scores" disabled />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>Chance</b>
+                                    </td>
+                                    <td>
+                                        Score Total Of All 5 Dice
+                                    </td>
+                                    <td>
+                                        <input id="chance" type="number" class="pad3 scores" onkeypress="pressEnter();" min="0" max="29" />&nbsp;<span onclick="disableBoxes('chance'); if ($('#chance').is(':disabled')) { $(this).addClass('green'); $(this).removeClass('point'); }" class="point check" id="chanceCheck">&#10003;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b>YAHTZEE BONUS</b>
+                                    </td>
+                                    <td>
+                                        SCORE 100 PER &#10003;
+                                    </td>
+                                    <td>
+                                        <span class="point check bonusYahtzee" onclick="$(this).addClass('green'); $(this).removeClass('point'); bonusCount++;">&#10003;</span>&emsp;
+                                        <span class="point check bonusYahtzee" onclick="$(this).addClass('green'); $(this).removeClass('point'); bonusCount++;">&#10003;</span>&emsp;
+                                        <span class="point check bonusYahtzee" onclick="$(this).addClass('green'); $(this).removeClass('point'); bonusCount++;">&#10003;</span>&emsp;
+                                        <span class="point check bonusYahtzee" onclick="$(this).addClass('green'); $(this).removeClass('point'); bonusCount++;">&#10003;</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="bottomBorder col-sm-12"></div>
+                    <div class="container">
+                        <div class="row font12">
+                            <table class="table scoreTable col-sm-12 noBorder">
+                                <tr>
+                                    <td style="text-align: right;">
+                                        <b>TOTAL</b>
+                                    </td>
+                                    <td>
+                                        <b>SCORE</b>
+                                    </td>
+                                    <td>
+                                        <input class="pad3" type="number" id="lowerScore" disabled />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="bottomBorder col-sm-12"></div>
+                    <div class="container">
+                        <div class="row font12">
+                            <table class="table scoreTable col-sm-12 noBorder">
+                                <tr>
+                                    <td style="text-align: right;">
+                                        <b>GRAND</b>
+                                    </td>
+                                    <td>
+                                        <b>TOTAL</b>
+                                    </td>
+                                    <td>
+                                        <input class="pad3" type="number" id="grandTotal" disabled />&nbsp;<span id="grandTotalCheck" class="check point" onclick="getGrandTotal();">&#10003;</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    var bonusCount = 0;
+    var editing = false;
+
+    $('#name').focus();
+
+    function disableBoxes(id) {
+        var elem = $('#' + id);
+
+        if ($(elem).val() !== '') {
+            $(elem).attr('disabled', 'disabled');
+
+            var ones = parseInt($('#aces').val());
+            var twos = parseInt($('#twos').val());
+            var threes = parseInt($('#threes').val());
+            var fours = parseInt($('#fours').val());
+            var fives = parseInt($('#fives').val());
+            var sixes = parseInt($('#sixes').val());
+
+            var topTotal = ones + twos + threes + fours + fives + sixes;
+
+            if (topTotal >= 63) {
+                topTotal += 35;
+                $('#bonusCheck').addClass('green');
+            }
+
+            $('#upperScore').val(topTotal);
+
+            var threeOKind = parseInt($('#3oKind').val());
+            var fourOKind = parseInt($('#4oKind').val());
+            var fullHouse = parseInt($('#fullHouse').val());
+            var smStraight = parseInt($('#smStraight').val());
+            var lgStraight = parseInt($('#lgStraight').val());
+            var yahtzee = parseInt($('#yahtzee').val());
+            var chance = parseInt($('#chance').val());
+
+            var bottomTotal = threeOKind + fourOKind + fullHouse + smStraight + lgStraight + yahtzee + chance;
+
+            $('#lowerScore').val(bottomTotal);
+        }
+    }
+
+    function determineCheck(x) {
+        switch (x) {
+            case 'aces':
+                $('#acesCheck').click();
+                break;
+            case 'twos':
+                $('#twosCheck').click();
+                break;
+            case 'threes':
+                $('#threesCheck').click();
+                break;
+            case 'fours':
+                $('#foursCheck').click();
+                break;
+            case 'fives':
+                $('#fivesCheck').click();
+                break;
+            case 'sixes':
+                $('#sixesCheck').click();
+                break;
+            case '3oKind':
+                $('#3oKindCheck').click();
+                break;
+            case '4oKind':
+                $('#4oKindCheck').click();
+                break;
+            case 'fullHouse':
+                $('#fullHouseCheck').click();
+                break;
+            case 'smStraight':
+                $('#smStraightCheck').click();
+                break;
+            case 'lgStraight':
+                $('#lgStraightCheck').click();
+                break;
+            case 'yahtzee':
+                $('#yahtzeeCheck').click();
+                break;
+            case 'chance':
+                $('#chanceCheck').click();
+                break;
+            default:
+                break;
+        }
+    }
+
+    function pressEnter(e) {
+        if (!e) e = window.event;
+        var keyCode = e.keyCode || e.which;
+        var id = e.target.id;
+        if (keyCode == '13') {
+            if (id === 'name') {
+                $('#overlay', parent.document).click();
+            } else {
+                return determineCheck(id);
+            }
+        }
+    }
+
+    function getGrandTotal() {
+        if ($('#upperScore').val() !== '' && $('#lowerScore').val() !== '') {
+            var upperScore = parseInt($('#upperScore').val());
+            var lowerScore = parseInt($('#lowerScore').val());
+
+            var grandTotal = upperScore + lowerScore;
+
+            if (bonusCount == 1) {
+                grandTotal += 100;
+            } else if (bonusCount == 2) {
+                grandTotal += 200;
+            } else if (bonusCount == 3) {
+                grandTotal += 300;
+            } else if (bonusCount == 4) {
+                grandTotal += 400;
+            }
+
+            $('#grandTotal').val(grandTotal);
+
+            $('#grandTotalCheck').addClass('green');
+
+            if (window.name == 'scoreBoard1') {
+                $('#player1TotalScore', parent.document).html(': ' + grandTotal);
+            } else if (window.name == 'scoreBoard2') {
+                $('#player2TotalScore', parent.document).html(': ' + grandTotal);
+            } else if (window.name == 'scoreBoard3') {
+                $('#player3TotalScore', parent.document).html(': ' + grandTotal);
+            } else if (window.name == 'scoreBoard4') {
+                $('#player4TotalScore', parent.document).html(': ' + grandTotal);
+            } else if (window.name == 'scoreBoard5') {
+                $('#player5TotalScore', parent.document).html(': ' + grandTotal);
+            } else if (window.name == 'scoreBoard6') {
+                $('#player6TotalScore', parent.document).html(': ' + grandTotal);
+            }
+        }
+    }
+
+    function capName() {
+        $('#name').val($('#name').val().substring(0, 1).toUpperCase() + $('#name').val().substring(1));
+    }
+
+    function populateName() {
+        if (editing != true) {
+            if (window.name == 'scoreBoard1') {
+                if ($('#player1Name', parent.document).is(':empty')) {
+                    $('#player1Name', parent.document).html($('#name').val());
+                }
+            } else if (window.name == 'scoreBoard2') {
+                if ($('#player2Name', parent.document).is(':empty')) {
+                    $('#player2Name', parent.document).html($('#name').val());
+                }
+            } else if (window.name == 'scoreBoard3') {
+                if ($('#player3Name', parent.document).is(':empty')) {
+                    $('#player3Name', parent.document).html($('#name').val());
+                }
+            } else if (window.name == 'scoreBoard4') {
+                if ($('#player4Name', parent.document).is(':empty')) {
+                    $('#player4Name', parent.document).html($('#name').val());
+                }
+            } else if (window.name == 'scoreBoard5') {
+                if ($('#player5Name', parent.document).is(':empty')) {
+                    $('#player5Name', parent.document).html($('#name').val());
+                }
+            } else if (window.name == 'scoreBoard6') {
+                if ($('#player6Name', parent.document).is(':empty')) {
+                    $('#player6Name', parent.document).html($('#name').val());
+                }
+            }
+        } else {
+            if (window.name == 'scoreBoard1') {
+                $('#player1Name', parent.document).html($('#name').val());
+                editing = false;
+            } else if (window.name == 'scoreBoard2') {
+                $('#player2Name', parent.document).html($('#name').val());
+                editing = false;
+            } else if (window.name == 'scoreBoard3') {
+                $('#player3Name', parent.document).html($('#name').val());
+                editing = false;
+            } else if (window.name == 'scoreBoard4') {
+                $('#player4Name', parent.document).html($('#name').val());
+                editing = false;
+            } else if (window.name == 'scoreBoard5') {
+                $('#player5Name', parent.document).html($('#name').val());
+                editing = false;
+            } else if (window.name == 'scoreBoard6') {
+                $('#player6Name', parent.document).html($('#name').val());
+                editing = false;
+            }
+        }
+    }
+</script>

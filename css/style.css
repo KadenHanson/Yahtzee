@@ -1,0 +1,249 @@
+﻿@font-face {
+    font-family: 'Josefin Sans';
+    src: url('JosefinSans.ttf');
+}
+
+body {
+    font-family: 'Josefin Sans';
+    background-color: #3c9a3c;
+    min-width: 745px;
+    overflow: hidden;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.centerAlign {
+    text-align: center;
+}
+
+.roman {
+    font-family: 'Times New Roman';
+}
+
+.font52 {
+    font-size: 52pt;
+}
+
+.font24 {
+    font-size: 24pt;
+}
+
+.font28 {
+    font-size: 28pt;
+}
+
+.font18 {
+    font-size: 18pt;
+}
+
+.font16 {
+    font-size: 16pt;
+}
+
+.font14 {
+    font-size: 14pt;
+}
+
+.font12 {
+    font-size: 12pt;
+}
+
+.pad10 {
+    padding: 10px;
+}
+
+.pad3 {
+    padding: 3px;
+}
+
+.green {
+    color: #57ba01;
+}
+
+.red {
+    color: #fc1e1e;
+}
+
+.check {
+    cursor: default;
+}
+
+.point {
+    cursor: pointer;
+}
+
+.whiteText {
+    color: white !important;
+}
+
+.scoreTable {
+    margin-top: 2%;
+    border-collapse: collapse;
+}
+
+    .scoreTable td {
+        vertical-align: middle !important;
+    }
+
+        .scoreTable td:first-child {
+            width: 10%;
+        }
+
+        .scoreTable td:nth-child(2) {
+            width: 12%;
+        }
+
+        .scoreTable td:last-child {
+            font-size: 18pt;
+            padding-left: 15px;
+            border-left: 1px solid black;
+        }
+
+        .scoreTable td input {
+            width: 214px;
+        }
+
+.scoreTable2 {
+    margin-top: 2%;
+    border-collapse: collapse;
+}
+
+    .scoreTable2 td {
+        vertical-align: middle !important;
+    }
+
+        .scoreTable2 td:first-child {
+            width: 12%;
+        }
+
+        .scoreTable2 td:nth-child(2) {
+            width: 10%;
+            font-size: 9pt;
+        }
+
+        .scoreTable2 td:last-child {
+            font-size: 18pt;
+            padding-left: 15px;
+            border-left: 1px solid black;
+        }
+
+        .scoreTable2 td input {
+            width: 214px;
+        }
+
+.fullWidth {
+    width: 100%;
+}
+
+.noBorder td {
+    border-top: none !important;
+}
+
+.diceBlock {
+    border: 2px solid black;
+    padding: 25px 25px;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.selectedDice {
+    border: 5px solid blue;
+}
+
+.height-165 {
+    height: 165px;
+}
+
+.rollButton {
+    display: inline-block;
+    margin-top: 75px;
+    border: 2px solid black;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+}
+
+    .rollButton:hover {
+        background-color: lightgray;
+    }
+
+.noSelect {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.mainTxt {
+    font-size: 100pt;
+    color: white;
+    font-weight: bold;
+    text-shadow: 4px 4px 6px #525252;
+}
+
+.scoreBox {
+    width: 55px;
+    height: 35px;
+    border: none;
+    background-color: transparent;
+    color: black;
+}
+
+.totalBox {
+    width: 75px;
+    height: 35px;
+    border: none;
+    background-color: transparent;
+    color: black;
+}
+
+input[type='text'] {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.bottomBorder {
+    border-bottom: 1px solid black;
+}
+
+.noShow {
+    background-color: transparent;
+    border: none;
+}
+
+iframe {
+    border: 3px solid black;
+    width: 805px;
+    height: 800px;
+    border-radius: 10px;
+}
+
+#overlay {
+    z-index: 40;
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    opacity:0.6;
+    background-color: black;
+    display: none;
+}
+
+.closeBtn {
+    text-align: right;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+.editBtn {
+    color: #c6c6c6;
+    cursor: pointer;
+}
+
+    .editBtn:hover {
+        color: black;
+    }
