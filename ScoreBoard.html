@@ -17,7 +17,7 @@
                     <div class="font16 bottomBorder col-sm-12"><b>Upper Section</b><div style="text-align: right; float: right;">Name: <input id="name" type="text" onblur="if ($(this).val() !== '') { $(this).attr('disabled', 'disabled'); $(this).addClass('noShow'); capName(); populateName(); }" /><span id="edit" class="editBtn" onclick="$('#name').removeAttr('disabled'); $('#name').removeClass('noShow'); $('#name').focus(); $('#name').val(''); editing = true;">&#x270E;</span></div></div>
                     <div class="container">
                         <div class="row font12">
-                            <table class="table scoreTable col-sm-12 noBorder">
+                            <table id="topScores" class="table scoreTable col-sm-12 noBorder">
                                 <tr>
                                     <td>
                                         <b>Aces</b>
@@ -258,6 +258,9 @@
                         </div>
                     </div>
                 </div>
+                <div style="text-align: center;">
+                    <button style="margin-top: 10px;" onclick="resetBoard();">Reset Board</button>
+                </div>
             </div>
         </div>
     </div>
@@ -453,6 +456,26 @@
                 $('#player6Name', parent.document).html($('#name').val());
                 editing = false;
             }
+        }
+    }
+
+    function resetBoard() {
+        $('input:not("#name")').val('');
+        $('#topScores input, #3oKind, #4oKind, #chance').removeAttr('disabled');
+        $('span').removeClass('red').removeClass('green').not('#bonusCheck').addClass('point');
+
+        if (window.name == 'scoreBoard1') {
+            $('#player1TotalScore', parent.document).html('');
+        } else if (window.name == 'scoreBoard2') {
+            $('#player2TotalScore', parent.document).html('');
+        } else if (window.name == 'scoreBoard3') {
+            $('#player3TotalScore', parent.document).html('');
+        } else if (window.name == 'scoreBoard4') {
+            $('#player4TotalScore', parent.document).html('');
+        } else if (window.name == 'scoreBoard5') {
+            $('#player5TotalScore', parent.document).html('');
+        } else if (window.name == 'scoreBoard6') {
+            $('#player6TotalScore', parent.document).html('');
         }
     }
 </script>
